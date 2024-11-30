@@ -51,8 +51,8 @@ class _SignInScreenState extends State<SignInScreen> {
       });
 
       // Simulate successful login
-      if (_usernameController.text == "Hendri" &&
-          _passwordController.text == "Wijaya") {
+      if (_usernameController.text == "admin" &&
+          _passwordController.text == "password") {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -70,7 +70,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign In'),
-        backgroundColor: Color.fromARGB(255, 240, 240, 240),
+        backgroundColor: Colors.green[700], // Dark green for app bar
         leading: Icon(Icons.login),
       ),
       body: Container(
@@ -78,7 +78,10 @@ class _SignInScreenState extends State<SignInScreen> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Colors.blue.shade100, Colors.purple.shade200],
+            colors: [
+              Colors.green.shade300,
+              Colors.white
+            ], // Green to white gradient
           ),
         ),
         child: Center(
@@ -90,7 +93,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Username field with next focus on the password field
+                    // Username field with white background
                     TextFormField(
                       controller: _usernameController,
                       focusNode: _usernameFocusNode,
@@ -99,6 +102,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         hintText: 'Masukkan nama pengguna',
                         border: OutlineInputBorder(),
                         prefixIcon: Icon(Icons.person),
+                        filled: true,
+                        fillColor:
+                            Colors.white, // White background for input fields
+                        labelStyle: TextStyle(color: Colors.white),
                       ),
                       textInputAction: TextInputAction.next,
                       onEditingComplete: () {
@@ -107,7 +114,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Password field with visibility toggle
+                    // Password field with white background and visibility toggle
                     TextFormField(
                       controller: _passwordController,
                       focusNode: _passwordFocusNode,
@@ -128,6 +135,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                 : Icons.visibility,
                           ),
                         ),
+                        filled: true,
+                        fillColor:
+                            Colors.white, // White background for input fields
+                        labelStyle: TextStyle(color: Colors.white),
                       ),
                       obscureText: _obscurePassword,
                       textInputAction: TextInputAction.done,
@@ -135,12 +146,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Custom animated button with shadow effect
+                    // Sign In Button with Green background and White Text
                     AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                       transform: _isSignIn
-                          ? (Matrix4.identity()..scale(1.1)) // Corrected
+                          ? (Matrix4.identity()..scale(1.1))
                           : Matrix4.identity(),
                       child: ElevatedButton(
                         onPressed: _signIn,
@@ -149,9 +160,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                 valueColor:
                                     AlwaysStoppedAnimation<Color>(Colors.white),
                               )
-                            : const Text('Sign In'),
+                            : const Text(
+                                'Sign In',
+                                style: TextStyle(color: Colors.white),
+                              ),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepPurple,
+                          backgroundColor: Colors.green[700], // Green color for the button
                           padding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 15),
                           shape: RoundedRectangleBorder(
@@ -165,12 +179,12 @@ class _SignInScreenState extends State<SignInScreen> {
 
                     const SizedBox(height: 10),
 
-                    // Sign-up navigation with clickable text and enhanced style
+                    // Sign-up navigation with clickable text
                     RichText(
                       text: TextSpan(
                         text: 'Belum punya akun? ',
-                        style: const TextStyle(
-                            fontSize: 16, color: Colors.deepPurple),
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.white),
                         children: [
                           TextSpan(
                             text: 'Daftar di sini.',
