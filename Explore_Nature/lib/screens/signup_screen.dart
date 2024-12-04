@@ -10,80 +10,79 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  //TODO: 1. Deklarasikan variabel yang dibutuhkan
+  // Deklarasikan variabel yang dibutuhkan
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _fullnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   String _errorText = '';
-
   bool _isSignUp = false;
-
   bool _obscurePassword = true;
-  // // Fungsi untuk validasi password
-  // String? _validatePassword(String? value) {
-  //   if (value == null || value.isEmpty) {
-  //     return 'Password is required';
-  //   }
-  //   if (value.length < 6) {
-  //     return 'Password should be at least 6 characters';
-  //   }
-  //   return null;
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //TODO: 2. Pasang AppBar
       appBar: AppBar(
         title: const Text('Sign Up'),
-        backgroundColor: Color.fromARGB(255, 223, 214, 240),
+        backgroundColor: Color.fromARGB(255, 54, 165, 6), // Kelly Green
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back, color: Colors.black), // Black arrow
           onPressed: () {
-            // Fungsi untuk kembali ke layar sebelumnya
-            //Navigator.pop(context);
+            Navigator.pop(context); // Kembali ke layar sebelumnya
           },
         ),
       ),
-      //TODO: 3. Pasang body
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Form(
               child: Column(
-                //TODO: 4. Atur mainAxisAlignment dan CrossAxisAlignment
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //TODO: 5. Buat TextFromField untuk nama lengkap
+                  // TextFormField untuk nama lengkap
                   TextFormField(
                     controller: _fullnameController,
-                    decoration: const InputDecoration(
+                    cursorColor: Colors.black, // Kursor hitam
+                    decoration: InputDecoration(
                       labelText: 'Nama',
                       hintText: 'Masukkan nama',
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
+                      labelStyle: TextStyle(
+                          color: Color.fromARGB(
+                              255, 54, 165, 6)), // Kelly Green text
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.black), // Border hitam saat fokus
+                      ),
                     ),
                   ),
-                  //TODO: 6. Buat TextFromField untuk nama pengguna
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
+
+                  // TextFormField untuk nama pengguna
                   TextFormField(
                     controller: _usernameController,
-                    decoration: const InputDecoration(
+                    cursorColor: Colors.black, // Kursor hitam
+                    decoration: InputDecoration(
                       labelText: 'Nama Pengguna',
                       hintText: 'Masukkan nama pengguna',
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
+                      labelStyle: TextStyle(
+                          color: Color.fromARGB(
+                              255, 54, 165, 6)), // Kelly Green text
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.black), // Border hitam saat fokus
+                      ),
                     ),
                   ),
-                  //TODO: 7. Buat TextFromField untuk kata sandi
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
+
+                  // TextFormField untuk kata sandi
                   TextFormField(
                     controller: _passwordController,
+                    cursorColor: Colors.black, // Kursor hitam
                     decoration: InputDecoration(
                       labelText: 'Kata Sandi',
                       hintText: 'Masukkan kata sandi',
@@ -101,14 +100,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               : Icons.visibility,
                         ),
                       ),
+                      labelStyle: TextStyle(
+                          color: Color.fromARGB(
+                              255, 54, 165, 6)), // Kelly Green text
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.black), // Border hitam saat fokus
+                      ),
                     ),
-                    //validator: _validatePassword,
                     obscureText: _obscurePassword,
                   ),
-                  //TODO: 8. Buat TextFromField untuk Sign In
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
+
+                  // ElevatedButton untuk Sign Up
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -116,7 +120,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         MaterialPageRoute(builder: (context) => SignInScreen()),
                       );
                     },
-                    child: const Text('Sign Up'),
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(
+                          255, 54, 165, 6), // Kelly Green background
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      shadowColor: Colors.black.withOpacity(0.4),
+                      elevation: 10,
+                    ),
                   ),
                 ],
               ),

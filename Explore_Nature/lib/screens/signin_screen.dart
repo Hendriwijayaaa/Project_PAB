@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:wisata_candi/data/candi_data.dart';
-import 'package:wisata_candi/screens/detail_screen.dart';
-import 'package:wisata_candi/screens/home_screen.dart';
 import 'package:wisata_candi/screens/signup_screen.dart';
+import 'package:wisata_candi/screens/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({super.key});
@@ -70,20 +68,11 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign In'),
-        backgroundColor: Colors.green[700], // Dark green for app bar
-        leading: Icon(Icons.login),
+        backgroundColor: Color.fromARGB(255, 54, 165, 6), // Kelly Green
+        leading: Icon(Icons.login, color: Colors.black), // Black logo
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.green.shade300,
-              Colors.white
-            ], // Green to white gradient
-          ),
-        ),
+        color: Colors.white, // White background
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
@@ -93,19 +82,32 @@ class _SignInScreenState extends State<SignInScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    // Centered Image (replace with your image)
+                    Image.asset(
+                      'images/Tree.png', // Replace with your image asset path
+                      height: 120, // Adjust the height as needed
+                    ),
+                    const SizedBox(height: 20),
+
                     // Username field with white background
                     TextFormField(
                       controller: _usernameController,
                       focusNode: _usernameFocusNode,
-                      decoration: const InputDecoration(
+                      cursorColor: Colors.black, // Black cursor
+                      decoration: InputDecoration(
                         labelText: 'Nama Pengguna',
                         hintText: 'Masukkan nama pengguna',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         prefixIcon: Icon(Icons.person),
                         filled: true,
-                        fillColor:
-                            Colors.white, // White background for input fields
-                        labelStyle: TextStyle(color: Colors.white),
+                        fillColor: Colors.white,
+                        labelStyle: TextStyle(
+                            color: Color.fromARGB(
+                                255, 0, 0, 0)), // Kelly Green text
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.black), // Black border when focused
+                        ),
                       ),
                       textInputAction: TextInputAction.next,
                       onEditingComplete: () {
@@ -118,6 +120,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     TextFormField(
                       controller: _passwordController,
                       focusNode: _passwordFocusNode,
+                      cursorColor: Colors.black, // Black cursor
                       decoration: InputDecoration(
                         labelText: 'Kata Sandi',
                         hintText: 'Masukkan kata sandi',
@@ -136,9 +139,14 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                         filled: true,
-                        fillColor:
-                            Colors.white, // White background for input fields
-                        labelStyle: TextStyle(color: Colors.white),
+                        fillColor: Colors.white,
+                        labelStyle: TextStyle(
+                            color: Color.fromARGB(
+                                255, 0, 0, 0)), // Kelly Green text
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.black), // Black border when focused
+                        ),
                       ),
                       obscureText: _obscurePassword,
                       textInputAction: TextInputAction.done,
@@ -146,7 +154,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Sign In Button with Green background and White Text
+                    // Sign In Button with Kelly Green background and White Text
                     AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
@@ -165,7 +173,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                 style: TextStyle(color: Colors.white),
                               ),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green[700], // Green color for the button
+                          backgroundColor: Color.fromARGB(
+                              255, 54, 165, 6), // Kelly Green background
                           padding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 15),
                           shape: RoundedRectangleBorder(
@@ -183,14 +192,17 @@ class _SignInScreenState extends State<SignInScreen> {
                     RichText(
                       text: TextSpan(
                         text: 'Belum punya akun? ',
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.white),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black87, // Dark text for contrast
+                        ),
                         children: [
                           TextSpan(
                             text: 'Daftar di sini.',
                             style: const TextStyle(
                               fontSize: 16,
-                              color: Colors.blue,
+                              color: Color.fromARGB(
+                                  255, 54, 165, 6), // Kelly Green color
                               decoration: TextDecoration.underline,
                             ),
                             recognizer: TapGestureRecognizer()
