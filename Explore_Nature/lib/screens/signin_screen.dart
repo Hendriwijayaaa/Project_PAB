@@ -84,7 +84,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   children: [
                     // Centered Image (replace with your image)
                     Image.asset(
-                      'images/Tree.png', // Replace with your image asset path
+                      'images/logo1.png', // Replace with your image asset path
                       height: 120, // Adjust the height as needed
                     ),
                     const SizedBox(height: 20),
@@ -156,7 +156,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
                     // Sign In Button with Kelly Green background and White Text
                     AnimatedContainer(
-                      duration: const Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 70),
                       curve: Curves.easeInOut,
                       transform: _isSignIn
                           ? (Matrix4.identity()..scale(1.1))
@@ -198,7 +198,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         children: [
                           TextSpan(
-                            text: 'Daftar di sini.',
+                            text: 'Sign Up',
                             style: const TextStyle(
                               fontSize: 16,
                               color: Color.fromARGB(
